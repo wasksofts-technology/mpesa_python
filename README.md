@@ -76,9 +76,6 @@ mpesa.reversal(
     occasion='Refund'
 )
 print(mpesa.get_response_data())
-```
-
-```
 
 
 
