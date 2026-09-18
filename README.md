@@ -41,3 +41,44 @@ mpesa.config('timeout_url', 'https://yourdomain.com/timeout')
 mpesa.config('initiator_name', 'testapi')
 mpesa.config('initiator_password', 'YOUR_INITIATOR_PASSWORD')
 ```
+## 💳 STK Push (Lipa Na M-Pesa Online)
+```
+response = mpesa.STKPush(
+    amount=1,
+    phone_number_sending_fund='254708374149',
+    account_reference='INV-001',
+    transaction_desc='Payment for invoice'
+)
+print(response)
+```
+
+## 🔍 STK Push Query
+Check the status of an STK Push transaction using the CheckoutRequestID returned from the STK Push response:
+
+```
+response = mpesa.STKPushQuery(checkout_request_id='ws_CO_191220191020363925')
+print(mpesa.get_response_data())
+```
+
+## 🔗 Register C2B URLs
+Register your confirmation and validation URLs with M-Pesa:
+
+```
+mpesa.register_url(status='Completed', version='v1')
+```
+## ↩️ Transaction Reversal
+Reverse a completed transaction:
+```
+mpesa.reversal(
+    amount=1,
+    transaction_id='LKXXXX1234',
+    remarks='Reversal request',
+    occasion='Refund'
+)
+print(mpesa.get_response_data())
+```
+
+```
+
+
+
